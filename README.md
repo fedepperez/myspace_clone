@@ -100,8 +100,5 @@ Plaintext
 
 └── README.md           # Documentazione
 
-📸 Anteprima
-Inserisci qui gli screenshot del progetto.
-
-📝 Licenza
+📝 Licenza:
 Questo progetto è distribuito sotto licenza MIT.
