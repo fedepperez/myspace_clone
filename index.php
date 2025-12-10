@@ -1,12 +1,9 @@
 <?php
 require 'config.php';
 
-if (isset($_SESSION['user_id'])) {
-    // Se loggato
+if (!empty($_SESSION['user_id'])) {
     header("Location: home.php");
-    exit;
 } else {
-    // Se non loggato
     header("Location: login.php");
-    exit;
 }
+exit;

@@ -1,38 +1,21 @@
 <?php
 require 'config.php';
-
-// Se l'utente è già loggato, reindirizza alla home
-if (isset($_SESSION['user_id'])) {
-    header("Location: home.php");
-    exit;
-}
-
 $errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email    = trim($_POST['email'] ?? '');
+    $username = trim($_POST['username'] ?? '');
     $password = $_POST['password'] ?? '';
 
-    if ($email === '' || $password === '') {
-        $errors[] = "Inserisci email e password.";
-    }
+    $stmt = $pdo->prepare("SELECT id, password_hash FROM users WHERE username = ?");
+    $stmt->execute([$username]);
+    $user = $stmt->fetch();
 
-    if (empty($errors)) {
-        // Cerca l'utente per email
-        $stmt = $pdo->prepare("SELECT id, username, password_hash FROM users WHERE email = ?");
-        $stmt->execute([$email]);
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($user && password_verify($password, $user['password_hash'])) {
-            // Login riuscito
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['username'];
-
-            header("Location: home.php");
-            exit;
-        } else {
-            $errors[] = "Email o password non corretti.";
-        }
+    if ($user && password_verify($password, $user['password_hash'])) {
+        $_SESSION['user_id'] = $user['id'];
+        header("Location: home.php");
+        exit;
+    } else {
+        $errors[] = "Username o password non validi.";
     }
 }
 ?>
@@ -42,49 +25,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accedi - MySpace Clone</title>
+    <title>Login - YourSpace</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="auth-page">
     <div class="auth-box">
-        <h1>MySpace Clone</h1>
-        <h2>Accedi al tuo profilo</h2>
-
-        <?php if (isset($_GET['registered'])): ?>
-            <div class="success">
-                <p>Registrazione completata con successo! Ora puoi accedere.</p>
-            </div>
-        <?php endif; ?>
-
-        <?php if (isset($_GET['deleted'])): ?>
-            <div class="success">
-                <p>Profilo eliminato con successo. Ci dispiace vederti andare via!</p>
-            </div>
-        <?php endif; ?>
-
-        <?php if (!empty($errors)): ?>
-            <div class="errors">
-                <?php foreach ($errors as $e): ?>
-                    <p><?= htmlspecialchars($e) ?></p>
-                <?php endforeach; ?>
-            </div>
-        <?php endif; ?>
+        <h1>YourSpace</h1>
+        <h2>Accedi</h2>
+        <?php if ($errors) foreach ($errors as $e) echo "<div class='errors'>$e</div>"; ?>
+        <?php if (isset($_GET['registered'])) echo "<div style='color:#39d97f; margin-top:1rem; text-align:center;'>Registrazione ok. Accedi.</div>"; ?>
+        <?php if (isset($_GET['deleted'])) echo "<div style='color:#ff6b6b; margin-top:1rem; text-align:center;'>Account eliminato.</div>"; ?>
 
         <form method="post">
-            <label>
-                Email
-                <input type="email" name="email" required>
-            </label>
-
-            <label>
-                Password
-                <input type="password" name="password" required>
-            </label>
-
-            <button type="submit">Accedi</button>
-            <p class="switch-auth">Non hai un account? <a href="register.php">Registrati</a></p>
+            <label>Username <input type="text" name="username" required></label>
+            <label>Password <input type="password" name="password" required></label>
+            <button type="submit">Login</button>
         </form>
+        <p class="switch-auth">Non hai un account? <a href="register.php">Registrati</a></p>
+        <p class="switch-auth">Hai dimenticato la password? <a href="forgot_password.php">Recuperala qui</a></p>
     </div>
 </body>
 

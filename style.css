@@ -1,7 +1,6 @@
 /* =========================
    GLOBAL
    ========================= */
-
 *,
 *::before,
 *::after {
@@ -10,79 +9,92 @@
 
 body {
     margin: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background: #111;
     color: #f5f5f5;
+    line-height: 1.5;
 }
 
 /* =========================
-   PAGINE AUTH (login / register)
+   PAGINE AUTH (Login / Register)
    ========================= */
-
 .auth-page {
     display: flex;
     min-height: 100vh;
     align-items: center;
     justify-content: center;
     background: radial-gradient(circle at top, #444, #000);
+    padding: 1rem;
 }
 
 .auth-box {
     background: rgba(0, 0, 0, 0.8);
     padding: 2rem 2.5rem;
-    border-radius: 10px;
+    border-radius: 12px;
     border: 1px solid #3aa4ff;
     max-width: 400px;
     width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .auth-box h1 {
     margin: 0;
     text-align: center;
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: #3aa4ff;
+    letter-spacing: -1px;
 }
 
 .auth-box h2 {
     margin-top: 0.5rem;
     text-align: center;
-    font-weight: normal;
+    font-weight: 400;
     font-size: 1.1rem;
-    color: #ddd;
+    color: #ccc;
 }
 
 .auth-box form {
     margin-top: 1.5rem;
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 1rem;
 }
 
 .auth-box label {
     display: flex;
     flex-direction: column;
     font-size: 0.9rem;
+    color: #ddd;
+    gap: 0.3rem;
 }
 
 .auth-box input,
 .auth-box textarea {
-    margin-top: 0.3rem;
-    padding: 0.5rem 0.6rem;
+    padding: 0.6rem 0.8rem;
     border-radius: 6px;
     border: 1px solid #555;
     background: #222;
-    color: #f5f5f5;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.auth-box input:focus {
+    outline: none;
+    border-color: #3aa4ff;
+    background: #2a2a2a;
 }
 
 .auth-box button {
-    margin-top: 0.8rem;
-    padding: 0.6rem;
+    margin-top: 0.5rem;
+    padding: 0.7rem;
     border-radius: 6px;
     border: none;
     background: #3aa4ff;
     color: #000;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.2s;
 }
 
 .auth-box button:hover {
@@ -90,893 +102,426 @@ body {
 }
 
 .errors {
-    background: #5b1111;
+    background: rgba(255, 92, 92, 0.15);
     border: 1px solid #ff5c5c;
-    padding: 0.5rem 0.7rem;
+    color: #ffcccc;
+    padding: 0.6rem;
     border-radius: 6px;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     margin-top: 1rem;
-}
-
-.success {
-    background: #114d2a;
-    border: 1px solid #39d97f;
-    padding: 0.5rem 0.7rem;
-    border-radius: 6px;
-    font-size: 0.85rem;
-    margin-top: 1rem;
+    text-align: center;
 }
 
 .switch-auth {
     text-align: center;
-    margin-top: 0.5rem;
-    font-size: 0.85rem;
-}
-
-/* =========================
-   LANDING PAGE (index)
-   ========================= */
-
-.landing-page {
-    background: radial-gradient(circle at top, #2b3558, #050509);
-    color: #f5f5f5;
-    min-height: 100vh;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-}
-
-.landing-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.9rem 1.8rem;
-    background: rgba(0, 0, 0, 0.7);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.landing-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.landing-logo h1 {
-    margin: 0;
-    font-size: 1.5rem;
-}
-
-.logo-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: #3aa4ff;
-    box-shadow: 0 0 8px rgba(58, 164, 255, 0.7);
-}
-
-.landing-nav {
-    display: flex;
-    align-items: center;
-    gap: 0.9rem;
-    font-size: 0.9rem;
-}
-
-.landing-nav a {
-    color: #f0f0f0;
-    text-decoration: none;
-    padding: 0.35rem 0.75rem;
-    border-radius: 999px;
-    border: 1px solid transparent;
-}
-
-.landing-nav a:hover {
-    border-color: rgba(255, 255, 255, 0.3);
-}
-
-.landing-nav .nav-cta {
-    background: #3aa4ff;
-    color: #000;
-    font-weight: 600;
-}
-
-.landing-main {
-    flex: 1;
-    max-width: 960px;
-    margin: 2.2rem auto;
-    padding: 0 1.5rem;
-    display: grid;
-    grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
-    gap: 2rem;
-}
-
-.landing-intro h2 {
-    margin-top: 0;
-    font-size: 1.8rem;
-}
-
-.landing-intro p {
-    margin-top: 0.4rem;
-    font-size: 0.98rem;
-    color: #d0d4e0;
-    max-width: 420px;
-}
-
-.landing-list {
     margin-top: 1rem;
-    padding-left: 1.1rem;
-    color: #b8bed0;
-    font-size: 0.92rem;
+    font-size: 0.9rem;
+    color: #bbb;
 }
 
-.landing-card {
-    background: rgba(0, 0, 0, 0.78);
-    border-radius: 16px;
-    padding: 1.6rem 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
-}
-
-.landing-card h3 {
-    margin-top: 0;
-    margin-bottom: 0.4rem;
-}
-
-.landing-card p {
-    margin-top: 0.2rem;
-    font-size: 0.92rem;
-    color: #c4c9d8;
-}
-
-.landing-buttons {
-    display: flex;
-    gap: 0.7rem;
-    margin-top: 1.2rem;
-}
-
-.landing-buttons a {
-    flex: 1;
-    text-align: center;
+.switch-auth a {
+    color: #3aa4ff;
     text-decoration: none;
-    padding: 0.7rem 0.9rem;
-    border-radius: 999px;
-    font-size: 0.95rem;
-    border: none;
-    cursor: pointer;
 }
 
-.btn-primary {
-    background: #3aa4ff;
-    color: #000;
-    font-weight: 600;
-}
-
-.btn-secondary {
-    background: transparent;
-    color: #f5f5f5;
-    border: 1px solid rgba(255, 255, 255, 0.35);
-}
-
-.btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.08);
-}
-
-.landing-footer {
-    text-align: center;
-    padding: 0.8rem 1rem 1.1rem;
-    font-size: 0.8rem;
-    color: #a3a8b8;
-    background: rgba(0, 0, 0, 0.7);
+.switch-auth a:hover {
+    text-decoration: underline;
 }
 
 /* =========================
-   PAGINA PROFILO / HOME (APP)
+   LAYOUT APP (Home / Profile)
    ========================= */
-
 .profile-page {
     --profile-color: #222222;
+    /* Default fallback */
     background: linear-gradient(135deg, var(--profile-color), #000);
     min-height: 100vh;
+    background-attachment: fixed;
+    /* Mantiene lo sfondo fisso mentre scorri */
 }
 
-/* Tema fisso per la home */
 .home-page {
     --profile-color: #2b3558;
 }
 
-/* Topbar */
-
+/* --- Topbar --- */
 .topbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0.8rem 1.5rem;
-    background: rgba(0, 0, 0, 0.75);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
 .topbar-logo {
-    font-size: 1.3rem;
-    font-weight: 600;
+    font-size: 1.4rem;
+    font-weight: 700;
     color: #fff;
     text-decoration: none;
-    margin-right: 1rem;
-}
-
-.topbar-logo:hover {
-    color: #3aa4ff;
+    letter-spacing: -0.5px;
 }
 
 .topbar nav {
     display: flex;
     align-items: center;
-}
-
-.topbar nav a {
-    color: #eee;
-    text-decoration: none;
-    margin-left: 1rem;
-    font-size: 0.9rem;
-    padding: 0.25rem 0.5rem;
-    border-radius: 6px;
-    transition: 0.15s;
-}
-
-.topbar nav a:hover {
-    background: rgba(255, 255, 255, 0.15);
+    gap: 0.5rem;
 }
 
 .nav-username {
-    margin-left: 0.5rem;
+    margin-right: 1rem;
     font-weight: 600;
     color: #fff;
 }
 
-/* Layout principale profilo/home */
+.topbar nav a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.95rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    transition: all 0.2s;
+}
 
+.topbar nav a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+
+/* --- Main Layout --- */
 .profile-shell {
     max-width: 1000px;
     margin: 2rem auto;
-    padding: 0 1.2rem 2.5rem;
+    padding: 0 1rem 3rem;
     display: grid;
-    grid-template-columns: minmax(0, 2fr) minmax(0, 1.5fr);
-    gap: 1.8rem;
+    grid-template-columns: 2fr 1.2fr;
+    gap: 2rem;
 }
 
 .profile-main-card,
 .profile-edit-card {
-    background: rgba(0, 0, 0, 0.75);
+    background: rgba(20, 20, 20, 0.85);
     border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 1.6rem 1.5rem;
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
+/* --- Profile Header --- */
 .profile-header-row {
     display: flex;
-    gap: 1.3rem;
+    gap: 1.2rem;
     align-items: center;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.5rem;
 }
 
 .avatar-bubble {
-    width: 72px;
-    aspect-ratio: 1 / 1;
-    height: auto;
-    padding: 0;
-    box-sizing: border-box;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
-    background: rgba(0, 0, 0, 0.9);
-    border: 2px solid rgba(255, 255, 255, 0.7);
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid rgba(255, 255, 255, 0.5);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 2rem;
-    font-weight: 600;
+    font-weight: 700;
+    color: #fff;
     text-transform: uppercase;
-}
-
-.profile-header-row {
-    align-items: center;
 }
 
 .profile-heading h2 {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    line-height: 1.2;
 }
 
 .profile-subtitle {
-    margin: 0.2rem 0 0.5rem;
-    font-size: 0.9rem;
-    color: #c2c7d5;
+    margin: 0.3rem 0;
+    font-size: 0.95rem;
+    color: #aaa;
 }
 
 .profile-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
+    margin-top: 0.5rem;
 }
 
 .profile-tag {
-    font-size: 0.78rem;
-    padding: 0.18rem 0.6rem;
-    border-radius: 999px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    color: #d0d4e2;
-    background: rgba(0, 0, 0, 0.5);
-}
-
-.profile-color-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-}
-
-.color-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    display: inline-block;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-}
-
-.profile-section h3,
-.profile-edit-card h3 {
-    margin-top: 0;
-    margin-bottom: 0.6rem;
-    font-size: 1.05rem;
+    font-size: 0.8rem;
+    padding: 0.2rem 0.7rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ccc;
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .bio {
     white-space: pre-wrap;
-    margin-top: 0.8rem;
-    font-size: 0.95rem;
+    font-size: 1rem;
+    color: #e0e0e0;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.profile-edit-hint {
-    margin-top: 0;
-    margin-bottom: 1rem;
-    font-size: 0.88rem;
-    color: #c0c4d3;
-}
-
-.profile-form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.9rem;
-}
-
-.profile-form label {
-    display: flex;
-    flex-direction: column;
+/* =========================
+   FORMS & INPUTS (App Internal)
+   ========================= */
+.profile-form label,
+.post-form label {
+    display: block;
+    margin-bottom: 0.4rem;
     font-size: 0.9rem;
+    color: #ccc;
 }
 
-.profile-form textarea {
-    margin-top: 0.3rem;
-    resize: vertical;
-    min-height: 130px;
-}
-
-.color-picker-row {
-    margin-top: 0.2rem;
-}
-
-.color-picker-inline {
-    margin-top: 0.3rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.color-picker-inline input[type="color"] {
-    padding: 0;
+.profile-form textarea,
+.post-textarea,
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 8px;
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    width: 46px;
-    height: 32px;
+    padding: 0.8rem;
+    font-size: 1rem;
+    color: #fff;
+    font-family: inherit;
+    transition: border-color 0.2s;
 }
 
-.color-hex {
-    font-size: 0.85rem;
-    color: #d0d4e2;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+.profile-form textarea:focus,
+.post-textarea:focus,
+input:focus {
+    outline: none;
+    border-color: #3aa4ff;
+    background: rgba(0, 0, 0, 0.5);
 }
 
-.profile-save-btn {
-    margin-top: 0.5rem;
-    padding: 0.6rem 0.9rem;
-    border-radius: 999px;
+.profile-save-btn,
+.post-submit-btn {
+    margin-top: 1rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
     border: none;
     background: #3aa4ff;
     color: #000;
     font-weight: 600;
     cursor: pointer;
     font-size: 0.95rem;
-}
-
-.profile-save-btn:hover {
-    background: #62b8ff;
-}
-
-.danger-link {
-    color: #ff6b6b;
-    font-size: 0.85rem;
-}
-
-.danger-link:hover {
-    text-decoration: underline;
-}
-
-/* =========================
-   INPUT / TEXTAREA GLOBALI
-   ========================= */
-
-.profile-form textarea,
-input[type="text"],
-input[type="color"],
-input[type="email"],
-input[type="password"],
-textarea {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 10px;
-    padding: 0.55rem 0.7rem;
-    font-size: 0.95rem;
-    color: #f5f5f5;
-    outline: none;
-    transition: 0.2s;
-    font-family: inherit;
-}
-
-.profile-form textarea:focus,
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus,
-textarea:focus {
-    border-color: var(--profile-color, #3aa4ff);
-    box-shadow: 0 0 0 2px rgba(58, 164, 255, 0.2);
-    background: rgba(255, 255, 255, 0.1);
-}
-
-/* =========================
-   POST / LIKE / DELETE
-   ========================= */
-
-.profile-section.posts-section {
-    margin-top: 0.4rem;
-}
-
-.post-form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    margin-top: 0.4rem;
-    margin-bottom: 1rem;
-}
-
-.post-label {
-    font-size: 0.95rem;
-    color: #e0e0e0;
-    margin-left: 2px;
-}
-
-.post-textarea {
-    width: 100%;
-    min-height: 90px;
-    resize: vertical;
-    padding: 10px 12px;
-    margin-top: 4px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    color: #f5f5f5;
-    font-family: inherit;
-    font-size: 0.95rem;
-    outline: none;
-    box-sizing: border-box;
-}
-
-.post-textarea:focus {
-    border-color: var(--profile-color, #3aa4ff);
-    box-shadow: 0 0 0 2px rgba(58, 164, 255, 0.2);
-    background: rgba(255, 255, 255, 0.1);
+    transition: transform 0.1s;
 }
 
 .post-submit-btn {
     align-self: flex-end;
-    padding: 0.5rem 1rem;
-    border-radius: 999px;
-    border: none;
-    background: #3aa4ff;
-    color: #000;
-    font-weight: 600;
-    font-size: 0.9rem;
-    cursor: pointer;
-    margin-top: 0;
+    /* Allinea a destra nel form dei post */
 }
 
+.profile-save-btn:hover,
 .post-submit-btn:hover {
     background: #62b8ff;
+    transform: scale(1.02);
 }
 
-.no-posts {
-    font-size: 0.9rem;
-    color: #c0c4d3;
+.color-picker-inline {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
 }
 
+.color-picker-inline input[type="color"] {
+    width: 50px;
+    height: 40px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/* =========================
+   POST CARDS
+   ========================= */
 .posts-list {
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
-    margin-top: 0.6rem;
+    gap: 1rem;
 }
 
 .post-card {
     position: relative;
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(30, 30, 30, 0.6);
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    padding: 0.8rem 0.9rem;
-    font-size: 0.93rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1.2rem;
 }
 
 .post-content {
-    margin: 0 0 0.4rem;
+    margin: 0.8rem 0;
     white-space: pre-wrap;
+    font-size: 1rem;
+    color: #eee;
+    line-height: 1.6;
 }
 
 .post-meta {
-    margin: 0;
-    font-size: 0.78rem;
-    color: #a7aec0;
-    text-align: right;
+    font-size: 0.8rem;
+    color: #888;
 }
 
-/* Delete post */
-
-.post-delete-form {
-    position: absolute;
-    top: 0.4rem;
-    right: 0.5rem;
-    margin: 0;
-}
-
+/* Delete Button (cestino) */
 .post-delete-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
     background: transparent;
     border: none;
     cursor: pointer;
-    color: #ff6b6b;
-    padding: 4px;
-    border-radius: 6px;
-    transition: 0.15s;
+    color: #ff5c5c;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background 0.2s;
 }
 
 .post-delete-btn:hover {
-    background: rgba(255, 107, 107, 0.15);
-    color: #ff9a9a;
-}
-
-.post-delete-btn:active {
-    transform: scale(0.92);
+    background: rgba(255, 92, 92, 0.1);
 }
 
 .trash-icon {
     width: 20px;
     height: 20px;
-    pointer-events: none;
 }
 
-/* Like button */
-
+/* Like System */
 .post-footer-row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 0.3rem;
+    margin-top: 0.8rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .like-form {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 0.25rem;
+    gap: 0.5rem;
 }
 
 .like-button {
     background: transparent;
     border: none;
     cursor: pointer;
-    font-size: 1.05rem;
+    font-size: 1.2rem;
+    color: #666;
     padding: 0;
-    line-height: 1;
-    color: #bbbbbb;
-    transition: 0.15s;
+    transition: transform 0.2s, color 0.2s;
 }
 
 .like-button:hover {
-    transform: scale(1.08);
+    transform: scale(1.2);
 }
 
 .like-button.liked {
-    color: #ff6b9b;
+    color: #e91e63;
+    /* Rosa per il cuore */
 }
 
 .like-count {
-    font-size: 0.85rem;
-    color: #d0d0d0;
+    font-size: 0.9rem;
+    color: #aaa;
+    font-weight: 600;
 }
 
 /* =========================
-   IMPOSTAZIONI (settings)
+   SETTINGS PAGE
    ========================= */
-
 .settings-section {
-    margin-top: 1.8rem;
-    padding-top: 1.2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-.settings-hint {
-    margin-top: 0.2rem;
-    font-size: 0.85rem;
-    color: #c0c4d3;
-}
-
-.settings-form {
-    margin-top: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
 }
 
-.settings-form label {
-    display: flex;
-    flex-direction: column;
+.settings-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    background: #444;
+    color: #fff;
+    text-decoration: none;
     font-size: 0.9rem;
-}
-
-.settings-form input[type="password"] {
-    margin-top: 0.3rem;
-}
-
-.settings-save-btn {
-    margin-top: 0.3rem;
-    padding: 0.55rem 0.9rem;
-    border-radius: 999px;
-    border: none;
-    background: #3aa4ff;
-    color: #000;
     font-weight: 600;
-    font-size: 0.9rem;
-    cursor: pointer;
-    align-self: flex-start;
+    transition: background 0.2s;
 }
 
-.settings-save-btn:hover {
-    background: #62b8ff;
-}
-
-.settings-message {
-    font-size: 0.85rem;
-    margin-top: 0.6rem;
-    padding: 0.45rem 0.6rem;
-    border-radius: 6px;
-}
-
-.settings-message-error {
-    background: #5b1111;
-    border: 1px solid #ff5c5c;
-}
-
-.settings-message-success {
-    background: #114d2a;
-    border: 1px solid #39d97f;
+.settings-button:hover {
+    background: #555;
 }
 
 .danger-button {
-    margin-top: 0.5rem;
-    padding: 0.55rem 0.9rem;
-    border-radius: 999px;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
     border: none;
-    background: #ff4b4b;
-    color: #000;
+    background: rgba(255, 75, 75, 0.15);
+    border: 1px solid #ff4b4b;
+    color: #ff4b4b;
     font-weight: 600;
-    font-size: 0.9rem;
     cursor: pointer;
-    align-self: flex-start;
+    font-size: 0.9rem;
+    transition: all 0.2s;
 }
 
 .danger-button:hover {
-    background: #ff7676;
+    background: #ff4b4b;
+    color: #fff;
 }
 
 /* =========================
-   RESPONSIVE
+   RESPONSIVE (Mobile)
    ========================= */
-
-/* Landing in colonna singola */
 @media (max-width: 800px) {
-    .landing-main {
-        grid-template-columns: 1fr;
-        margin-top: 1.8rem;
-    }
-}
-
-/* Profilo / home in una colonna */
-@media (max-width: 900px) {
     .profile-shell {
         grid-template-columns: 1fr;
+        /* Colonna singola */
+        gap: 1.5rem;
+    }
+
+    /* Invertiamo l'ordine: su mobile vuoi vedere prima 
+       la possibilità di postare (edit-card) o il profilo */
+    .profile-edit-card {
+        order: -1;
     }
 }
 
-/* Navbar mobile: 3 righe (logo, Ciao nome, link) */
-@media (max-width: 700px) {
-
+@media (max-width: 600px) {
     .topbar {
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.4rem;
-        padding: 0.9rem 1rem;
-    }
-
-    .topbar-logo {
-        font-size: 1.3rem;
-        margin: 0;
-        padding: 0;
+        gap: 1rem;
+        padding: 1rem;
     }
 
     .topbar nav {
         width: 100%;
-        display: flex;
+        justify-content: space-between;
         flex-wrap: wrap;
-        gap: 0.6rem;
-        margin-top: 0.2rem;
     }
 
-    .topbar nav .nav-username {
-        flex-basis: 100%;
-        margin: 0;
-        font-size: 0.95rem;
-        font-weight: 600;
-    }
-
-    .topbar nav a {
-        padding: 0;
-        margin: 0;
-        font-size: 0.9rem;
-    }
-}
-
-/* Mobile extra (≤600px) */
-@media (max-width: 600px) {
-
-    /* Auth box */
     .auth-box {
-        max-width: 90%;
-        padding: 1.6rem 1.4rem;
+        padding: 1.5rem;
     }
 
-    .auth-box h1 {
-        font-size: 1.5rem;
-    }
-
-    .auth-box h2 {
-        font-size: 1rem;
-    }
-
-    /* Layout principale app */
     .profile-shell {
-        padding: 0 0.9rem 2rem;
-        gap: 1.3rem;
-    }
-
-    .profile-main-card,
-    .profile-edit-card {
-        padding: 1.2rem 1.1rem;
-        border-radius: 14px;
-    }
-
-    .profile-header-row {
-        gap: 0.9rem;
-    }
-
-    .avatar-bubble {
-        width: 60px;
-        height: 60px;
-        font-size: 1.6rem;
-    }
-
-    .profile-heading h2 {
-        font-size: 1.3rem;
-    }
-
-    .profile-subtitle {
-        font-size: 0.85rem;
-    }
-
-    .profile-tag {
-        font-size: 0.75rem;
-    }
-
-    /* Post */
-    .post-card {
-        padding: 0.7rem 0.75rem;
-        font-size: 0.9rem;
-    }
-
-    .post-content {
-        font-size: 0.9rem;
-    }
-
-    .post-meta {
-        font-size: 0.75rem;
-    }
-
-    .post-textarea {
-        min-height: 80px;
-        font-size: 0.9rem;
-    }
-
-    .post-submit-btn {
-        font-size: 0.85rem;
-        padding: 0.45rem 0.9rem;
-    }
-
-    .like-button {
-        font-size: 1rem;
-    }
-
-    .like-count {
-        font-size: 0.8rem;
-    }
-
-    /* Landing */
-    .landing-header {
-        padding: 0.7rem 1rem;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.4rem;
-    }
-
-    .landing-main {
-        padding: 0 1rem;
-        margin-top: 1.6rem;
-        gap: 1.4rem;
-    }
-
-    .landing-intro h2 {
-        font-size: 1.5rem;
-    }
-
-    .landing-intro p {
-        font-size: 0.92rem;
-    }
-
-    .landing-card {
-        padding: 1.2rem 1.1rem;
-    }
-
-    .landing-buttons {
-        flex-direction: column;
-    }
-
-    .landing-buttons a {
-        width: 100%;
-    }
-
-    /* Settings page */
-    .settings-section {
-        margin-top: 1.4rem;
-        padding-top: 1rem;
-    }
-
-    .settings-form {
-        gap: 0.6rem;
-    }
-
-    .settings-save-btn,
-    .danger-button {
-        font-size: 0.85rem;
-        padding: 0.5rem 0.8rem;
+        padding: 0 0.8rem 2rem;
     }
 }
