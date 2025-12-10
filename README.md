@@ -83,14 +83,23 @@ Plaintext
 
 /yourspace
 │
+
 ├── index.php           # Home / Landing Page
+
 ├── login.php           # Form di accesso
+
 ├── register.php        # Form di registrazione
+
 ├── profile.php         # Il tuo "Space" (Dashboard)
+
 ├── config.php          # Configurazione DB
+
 ├── logout.php          # Script logout
+
 ├── style.css           # UI / UX Design
+
 └── README.md           # Documentazione
+
 📸 Anteprima
 Inserisci qui gli screenshot del progetto.
 
